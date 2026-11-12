@@ -38,7 +38,8 @@ Configuration keys (`pharaonic.favorites.*`), publish tags, and registered Blade
 - Events are dispatched right after the write, inside the caller's transaction when there is one, because `ShouldDispatchAfterCommit` needs Laravel 10.30.
 - `phpstan.neon.dist` also analyses `tests/Fixtures`: PHPStan analyses a trait only through a class that uses it.
 - `toggleFavorite()` inserts first and deletes the row the unique index points at. Nothing serializes the two steps, so concurrent toggles of one pair are not linearizable; the tests only promise that they never leave two rows.
-- `ConcurrencyTest` runs separate PHP processes against a shared database: a SQLite file by default, MySQL or PostgreSQL through the `FAVORITES_DB*` environment variables (`.github/workflows/databases.yml`).
+- `ConcurrencyTest` runs separate PHP processes (`tests/Processes/worker.php`) against a shared database: a SQLite file by default, MySQL or PostgreSQL through the `FAVORITES_DB*` environment variables (`.github/workflows/databases.yml`).
+- The published-migration test needs a process where the migration class was never declared. `6.x` runs it as a PHPUnit class in separate processes; Pest cannot, so later lines run `tests/Processes/published-migration.php` as a subprocess.
 
 ## Branch notes
 
