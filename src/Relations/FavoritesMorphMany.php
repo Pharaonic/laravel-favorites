@@ -26,8 +26,8 @@ use Pharaonic\Laravel\Favorites\Support\FavoriteManager;
 final class FavoritesMorphMany extends MorphMany
 {
     /**
-     * Declared here so PHPStan 2.1.0, the line's lowest, infers TDeclaringModel
-     * from `new FavoritesMorphMany(...)`: it does not read the inherited constructor.
+     * Declared here so PHPStan infers TDeclaringModel from `new FavoritesMorphMany(...)`:
+     * PHPStan 2.1.0 does not read it from the inherited constructor.
      *
      * @param  Builder<Favorite>  $query
      * @param  TDeclaringModel  $parent
