@@ -1,15 +1,15 @@
 <?php
 
 /*
- * One worker of ConcurrencyTest: boots the package, waits for the shared
+ * One worker of the concurrency tests: boots the package, waits for the shared
  * start time, then favorites, unfavorites or toggles one pair and prints 1 or 0.
  *
  * Usage: php worker.php <favorite|unfavorite|toggle> <user id> <post id> <start time>
  */
 
-use Pharaonic\Laravel\Favorites\Tests\Concurrency\WorkerApplication;
 use Pharaonic\Laravel\Favorites\Tests\Fixtures\Post;
 use Pharaonic\Laravel\Favorites\Tests\Fixtures\User;
+use Pharaonic\Laravel\Favorites\Tests\Processes\WorkerApplication;
 
 require __DIR__.'/../../vendor/autoload.php';
 

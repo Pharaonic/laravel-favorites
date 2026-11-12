@@ -1,6 +1,6 @@
 <?php
 
-namespace Pharaonic\Laravel\Favorites\Tests\Concurrency;
+namespace Pharaonic\Laravel\Favorites\Tests\Processes;
 
 use Pharaonic\Laravel\Favorites\Tests\TestCase;
 
