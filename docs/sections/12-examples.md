@@ -99,4 +99,4 @@ public function handle(FavoriteCreated $event)
 }
 ```
 
-Register it for `Pharaonic\Laravel\Favorites\Events\FavoriteCreated` in your `EventServiceProvider`.
+Laravel discovers it from the `FavoriteCreated` type of `handle()`; see [Events](#events) to register it yourself.

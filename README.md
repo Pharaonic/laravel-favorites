@@ -1,8 +1,8 @@
 <p align="center">
-  <a href="https://php.net" target="_blank"><img src="https://img.shields.io/static/v1?label=PHP&message=8.1%20|%208.2%20|%208.3&color=blue&style=flat-square" alt="PHP Version : 8.1 | 8.2 | 8.3"></a>
-  <a href="https://laravel.com" target="_blank"><img src="https://img.shields.io/static/v1?label=Laravel&message=10.x&color=F05340&style=flat-square" alt="Laravel Version : 10.x"></a>
+  <a href="https://php.net" target="_blank"><img src="https://img.shields.io/static/v1?label=PHP&message=8.2%20|%208.3%20|%208.4&color=blue&style=flat-square" alt="PHP Version : 8.2 | 8.3 | 8.4"></a>
+  <a href="https://laravel.com" target="_blank"><img src="https://img.shields.io/static/v1?label=Laravel&message=11.x&color=F05340&style=flat-square" alt="Laravel Version : 11.x"></a>
   <img src="https://img.shields.io/static/v1?label=License&message=MIT&color=brightgreen&style=flat-square" alt="License">
-  <img src="https://github.com/Pharaonic/laravel-favorites/actions/workflows/build.yml/badge.svg?branch=10.x" alt="Build">
+  <img src="https://github.com/Pharaonic/laravel-favorites/actions/workflows/build.yml/badge.svg?branch=11.x" alt="Build">
 </p>
 
 <h3 align="center">Polymorphic favorites for Eloquent models, kept unique by the database.</h3>

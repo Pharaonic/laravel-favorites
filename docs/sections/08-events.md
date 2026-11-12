@@ -26,12 +26,17 @@ class NotifyAuthor
 }
 ```
 
-```php title="app/Providers/EventServiceProvider.php"
-protected $listen = [
-    \Pharaonic\Laravel\Favorites\Events\FavoriteCreated::class => [
-        \App\Listeners\NotifyAuthor::class,
-    ],
-];
+Laravel discovers the listener in `app/Listeners` from the `FavoriteCreated` type of its `handle()` method. To register it yourself, add it in a service provider:
+
+```php title="app/Providers/AppServiceProvider.php"
+use App\Listeners\NotifyAuthor;
+use Illuminate\Support\Facades\Event;
+use Pharaonic\Laravel\Favorites\Events\FavoriteCreated;
+
+public function boot(): void
+{
+    Event::listen(FavoriteCreated::class, NotifyAuthor::class);
+}
 ```
 
 ### When listeners run
