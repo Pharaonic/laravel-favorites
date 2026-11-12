@@ -65,7 +65,7 @@ $user->givenFavorites()->with('favoritable')->latest()->get();
 
 ## Documentation
 
-Full documentation: [Laravel Favorites Documentation](docs/sections/01-overview.md). It is published on pharaonic.dev with the first release.
+Full documentation: [Laravel Favorites Documentation](docs/sections/01-overview.md).
 
 ## Support & Security
 
