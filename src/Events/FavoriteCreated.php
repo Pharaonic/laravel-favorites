@@ -14,6 +14,5 @@ final class FavoriteCreated
         public Favorite $favorite,
         public Model $favoriter,
         public Model $favoritable,
-    ) {
-    }
+    ) {}
 }

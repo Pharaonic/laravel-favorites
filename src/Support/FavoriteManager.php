@@ -221,9 +221,9 @@ final class FavoriteManager
                         return [$existing, false];
                     }
 
-                // The favorite was deleted between the insert and the read: insert
-                // again. When it keeps missing, another unique index refused the
-                // row, which is not ours to swallow.
+                    // The favorite was deleted between the insert and the read: insert
+                    // again. When it keeps missing, another unique index refused the
+                    // row, which is not ours to swallow.
                 } elseif (! self::canRetry($exception, $connection)) {
                     throw $exception;
                 }

@@ -15,6 +15,5 @@ final class FavoriteRemoved
         public Favorite $favorite,
         public Model $favoriter,
         public Model $favoritable,
-    ) {
-    }
+    ) {}
 }
