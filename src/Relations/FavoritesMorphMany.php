@@ -2,10 +2,12 @@
 
 namespace Pharaonic\Laravel\Favorites\Relations;
 
+use Illuminate\Contracts\Database\Query\Expression as ExpressionContract;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Grammar;
 use Pharaonic\Laravel\Favorites\Models\Favorite;
 use Pharaonic\Laravel\Favorites\Support\FavoriteManager;
 
@@ -84,27 +86,35 @@ final class FavoritesMorphMany extends MorphMany
      */
     public function getRelationExistenceQuery(Builder $query, Builder $parentQuery, $columns = ['*'])
     {
-        $grammar = $query->getQuery()->getGrammar();
-        $parentKey = $grammar->wrap($this->getQualifiedParentKeyName());
-
         $connection = $query->getQuery()->getConnection();
         $driver = $connection instanceof Connection ? $connection->getDriverName() : null;
 
-        $parentKeyAsString = match ($driver) {
+        $template = match ($driver) {
             // CONCAT() takes the collation of the favorites column, so a connection
             // collation that differs from the table's cannot make it fail.
-            'mysql', 'mariadb' => 'concat('.$parentKey.')',
-            'pgsql' => 'cast('.$parentKey.' as varchar)',
-            'sqlite' => 'cast('.$parentKey.' as text)',
+            'mysql', 'mariadb' => 'concat(%s)',
+            'pgsql' => 'cast(%s as varchar)',
+            'sqlite' => 'cast(%s as text)',
             default => null,
         };
 
-        if ($parentKeyAsString === null || $query->getQuery()->from == $parentQuery->getQuery()->from) {
+        if ($template === null || $query->getQuery()->from == $parentQuery->getQuery()->from) {
             return parent::getRelationExistenceQuery($query, $parentQuery, $columns);
         }
 
+        // The grammar wraps the column when the query is compiled.
+        $parentKeyAsString = new class($template, $this->getQualifiedParentKeyName()) implements ExpressionContract
+        {
+            public function __construct(private string $template, private string $column) {}
+
+            public function getValue(Grammar $grammar): string
+            {
+                return sprintf($this->template, $grammar->wrap($this->column));
+            }
+        };
+
         $query->select($columns);
-        $query->whereRaw($parentKeyAsString.' = '.$grammar->wrap($this->getExistenceCompareKey()));
+        $query->whereColumn($parentKeyAsString, '=', $this->getExistenceCompareKey());
         $query->where($query->qualifyColumn($this->getMorphType()), $this->morphClass);
 
         return $query;
