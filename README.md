@@ -1,10 +1,14 @@
-<p align="center"><a href="docs/sections/01-overview.md"><img src="https://raw.githubusercontent.com/Pharaonic/laravel-favorites/develop/docs/cover.webp" alt="Laravel Favorites"></a></p>
+<p align="center"><a href="https://pharaonic.dev/packages/laravel/favorites" target="_blank"><img src="https://raw.githubusercontent.com/Pharaonic/laravel-favorites/develop/docs/cover.webp"></a></p>
 
 <p align="center">
   <a href="https://php.net" target="_blank"><img src="https://img.shields.io/static/v1?label=PHP&message=8.1%20|%208.2%20|%208.3&color=blue&style=flat-square" alt="PHP Version : 8.1 | 8.2 | 8.3"></a>
   <a href="https://laravel.com" target="_blank"><img src="https://img.shields.io/static/v1?label=Laravel&message=10.x&color=F05340&style=flat-square" alt="Laravel Version : 10.x"></a>
   <img src="https://img.shields.io/static/v1?label=License&message=MIT&color=brightgreen&style=flat-square" alt="License">
   <img src="https://github.com/Pharaonic/laravel-favorites/actions/workflows/build.yml/badge.svg?branch=10.x" alt="Build">
+  <br>
+  <a href="https://packagist.org/packages/Pharaonic/laravel-favorites" target="_blank"><img src="https://img.shields.io/static/v1?label=Packagist&message=pharaonic/laravel-favorites&color=blue&logo=packagist&logoColor=white" alt="Source"></a>
+  <a href="https://packagist.org/packages/pharaonic/laravel-favorites" target="_blank"><img src="https://poser.pugx.org/pharaonic/laravel-favorites/v" alt="Packagist Version"></a>
+  <a href="https://packagist.org/packages/pharaonic/laravel-favorites" target="_blank"><img src="https://poser.pugx.org/pharaonic/laravel-favorites/downloads" alt="Packagist Downloads"></a>
 </p>
 
 <h3 align="center">Polymorphic favorites for Eloquent models, kept unique by the database.</h3>
@@ -65,7 +69,7 @@ $user->givenFavorites()->with('favoritable')->latest()->get();
 
 ## Documentation
 
-Full documentation: [Laravel Favorites Documentation](docs/sections/01-overview.md).
+Full documentation: [Laravel Favorites Documentation](https://pharaonic.dev/packages/laravel/favorites).
 
 ## Support & Security
 
