@@ -8,7 +8,7 @@ Another package or an earlier migration created a `favorites` table. Set `pharao
 
 The pair was already favorited: `favorite()` returns whether this call created the favorite. Use `hasFavorited()` for the current state. A `creating` listener on the `Favorite` model that returns false also makes `favorite()` return false.
 
-### `The favoriter [App\User] is not saved`
+### `The favoriter [App\Models\User] is not saved`
 
 A write was called with a model that isn't saved. Save it first, or check `$model->exists`.
 
@@ -30,4 +30,4 @@ The models were deleted with a query (`Post::where(...)->delete()`), which skips
 
 ### Favorites are missing after adding a morph map
 
-Rows stored before the map hold class names, and the package now looks for the alias. Update those rows deliberately, type by type, for example `UPDATE favorites SET favoritable_type = 'post' WHERE favoritable_type = 'App\\Post';`.
+Rows stored before the map hold class names, and the package now looks for the alias. Update those rows deliberately, type by type, for example `UPDATE favorites SET favoritable_type = 'post' WHERE favoritable_type = 'App\\Models\\Post';`.

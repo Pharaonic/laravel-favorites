@@ -7,9 +7,11 @@ Send the state the user wants, so a double click can't undo itself, and return t
 - ===Routes
 
   ```php title="routes/web.php"
+  use App\Http\Controllers\PostFavoriteController;
+
   Route::middleware('auth')->group(function () {
-      Route::post('posts/{post}/favorite', 'PostFavoriteController@store');
-      Route::delete('posts/{post}/favorite', 'PostFavoriteController@destroy');
+      Route::post('posts/{post}/favorite', [PostFavoriteController::class, 'store']);
+      Route::delete('posts/{post}/favorite', [PostFavoriteController::class, 'destroy']);
   });
   ```
 
@@ -18,7 +20,7 @@ Send the state the user wants, so a double click can't undo itself, and return t
   ```php title="app/Http/Controllers/PostFavoriteController.php"
   namespace App\Http\Controllers;
 
-  use App\Post;
+  use App\Models\Post;
   use Illuminate\Http\Request;
 
   class PostFavoriteController extends Controller
@@ -71,7 +73,7 @@ $favorites = $request->user()->givenFavorites()->with('favoritable')->latest()->
 
 `User` uses both traits, so users can favorite users.
 
-```php title="app/User.php"
+```php title="app/Models/User.php"
 class User extends Authenticatable
 {
     use CanFavorite, HasFavorites;

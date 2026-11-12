@@ -51,6 +51,7 @@
 | Exception | Thrown by | When |
 | --- | --- | --- |
 | `InvalidArgumentException` | `favorite()`, `unfavorite()`, `toggleFavorite()`, `favoriteBy()`, `unfavoriteBy()` | A model is unsaved or has no key, a key is longer than 64 characters, or a morph type is longer than 191. Nothing is written. |
+| `Illuminate\Database\ClassMorphViolationException` | every method | `Relation::enforceMorphMap()` is on and a model has no alias. Nothing is written. |
 | `Illuminate\Database\QueryException` | every method | Any database error other than the pair's own unique index refusing a duplicate. |
 
 ### Configuration and publish tags

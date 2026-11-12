@@ -19,7 +19,7 @@ class NotifyAuthor
 {
     public function handle(FavoriteCreated $event)
     {
-        if ($event->favoritable instanceof \App\Post) {
+        if ($event->favoritable instanceof \App\Models\Post) {
             $event->favoritable->author->notify(new PostFavorited($event->favoriter));
         }
     }

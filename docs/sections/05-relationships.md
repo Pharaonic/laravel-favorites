@@ -20,8 +20,8 @@ use Pharaonic\Laravel\Favorites\Models\Favorite;
 
 $favorite = $post->favorites()->latest()->first();
 
-$favorite->favoriter;    // App\User
-$favorite->favoritable; // App\Post
+$favorite->favoriter;    // App\Models\User
+$favorite->favoritable; // App\Models\Post
 $favorite->created_at;
 
 $user->givenFavorites()->with('favoritable')->latest()->get()

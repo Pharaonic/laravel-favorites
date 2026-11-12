@@ -5,7 +5,7 @@ subtitle: A user favorites a post, and the post page shows its count.
 file: routes/web.php
 language: php
 code: |
-  use App\Post;
+  use App\Models\Post;
 
   Route::post('posts/{post}/favorite', function (Post $post) {
       $created = request()->user()->favorite($post);

@@ -2,8 +2,8 @@
 
 Add `CanFavorite` to the model that favorites and `HasFavorites` to the model that is favorited.
 
-```php title="app/User.php"
-namespace App;
+```php title="app/Models/User.php"
+namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Pharaonic\Laravel\Favorites\Concerns\CanFavorite;
@@ -14,8 +14,8 @@ class User extends Authenticatable
 }
 ```
 
-```php title="app/Post.php"
-namespace App;
+```php title="app/Models/Post.php"
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Favorites\Concerns\HasFavorites;
@@ -92,6 +92,6 @@ $bob->favoritedBy($alice);         // true
 The writes need both models saved, because a favorite stores their keys. `favorite()`, `unfavorite()`, `toggleFavorite()`, `favoriteBy()` and `unfavoriteBy()` throw an `InvalidArgumentException` before touching the database when either model is unsaved. The reads `hasFavorited()` and `favoritedBy()` return false, and `whereFavoritedBy()` matches nothing.
 
 ```php
-$user->favorite(new Post); // InvalidArgumentException: The favoritable [App\Post] is not saved: ...
+$user->favorite(new Post); // InvalidArgumentException: The favoritable [App\Models\Post] is not saved: ...
 $user->hasFavorited(new Post); // false
 ```
