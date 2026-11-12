@@ -4,6 +4,7 @@ namespace Pharaonic\Laravel\Favorites\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Pharaonic\Laravel\Favorites\Models\Favorite;
 use Pharaonic\Laravel\Favorites\Support\FavoriteManager;
 
 /**
@@ -23,6 +24,8 @@ trait CanFavorite
 
     /**
      * The favorites this model gave.
+     *
+     * @return MorphMany<Favorite, $this>
      */
     public function givenFavorites(): MorphMany
     {

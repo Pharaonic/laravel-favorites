@@ -5,6 +5,7 @@ namespace Pharaonic\Laravel\Favorites\Concerns;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Pharaonic\Laravel\Favorites\Models\Favorite;
 use Pharaonic\Laravel\Favorites\Support\FavoriteManager;
 
 /**
@@ -24,6 +25,8 @@ trait HasFavorites
 
     /**
      * The favorites this model received.
+     *
+     * @return MorphMany<Favorite, $this>
      */
     public function favorites(): MorphMany
     {
@@ -56,6 +59,8 @@ trait HasFavorites
 
     /**
      * Only the models the favoriter favorites.
+     *
+     * @param  Builder<static>  $query
      */
     public function scopeWhereFavoritedBy(Builder $query, Model $favoriter): void
     {

@@ -51,6 +51,8 @@ class Favorite extends Model
 
     /**
      * The model that gave the favorite.
+     *
+     * @return MorphTo<Model, $this>
      */
     public function favoriter(): MorphTo
     {
@@ -59,6 +61,8 @@ class Favorite extends Model
 
     /**
      * The model that received the favorite.
+     *
+     * @return MorphTo<Model, $this>
      */
     public function favoritable(): MorphTo
     {
@@ -67,6 +71,8 @@ class Favorite extends Model
 
     /**
      * Only the favorites given by the favoriter.
+     *
+     * @param  Builder<Favorite>  $query
      */
     public function scopeWhereFavoriter(Builder $query, Model $favoriter): void
     {
@@ -75,6 +81,8 @@ class Favorite extends Model
 
     /**
      * Only the favorites received by the favoritable.
+     *
+     * @param  Builder<Favorite>  $query
      */
     public function scopeWhereFavoritable(Builder $query, Model $favoritable): void
     {
