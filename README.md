@@ -1,3 +1,5 @@
+<p align="center"><a href="docs/sections/01-overview.md"><img src="https://raw.githubusercontent.com/Pharaonic/laravel-favorites/develop/docs/cover.webp" alt="Laravel Favorites"></a></p>
+
 <p align="center">
   <a href="https://php.net" target="_blank"><img src="https://img.shields.io/static/v1?label=PHP&message=8.1%20|%208.2%20|%208.3&color=blue&style=flat-square" alt="PHP Version : 8.1 | 8.2 | 8.3"></a>
   <a href="https://laravel.com" target="_blank"><img src="https://img.shields.io/static/v1?label=Laravel&message=10.x&color=F05340&style=flat-square" alt="Laravel Version : 10.x"></a>
